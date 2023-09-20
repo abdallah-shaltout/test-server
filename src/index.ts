@@ -1,19 +1,16 @@
-import express, {Request, Response, Application} from "express"
-import dotenv from "dotenv"
+import express, {Request, Response} from 'express'
 
-const app: Application = express()
-
+const app = express()
+const port = process.env.PORT || 8080
 
 app.get('/', (_req: Request, res: Response) => {
-    res.send("Express & Typescript")
+    return res.send('Express Typescript on Vercel')
 })
 
-
-app.get('/test', (req: Request, res: Response) => {
-    res.json({
-        msg: "Msg Here",
-        ...req.query
-    })
+app.get('/ping', (_req: Request, res: Response) => {
+    return res.send('pong 🏓')
 })
 
-app.listen(process.env.PORT || 3000)
+app.listen(port, () => {
+    return console.log(`Server is listening on ${port}`)
+})
